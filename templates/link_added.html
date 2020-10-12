@@ -22,7 +22,15 @@
                         <input class="input" type="text" name="original_url" value="{{ url_for('redirect_to_url', short_url=new_link, _external=True) }}">
                     </div>
             </div>
+        <div class="control">
+            <button onclick="goBack()"class="button is-info">Create one more</button>
+        </div>
     </div>
   </section>
   </body>
 </html>
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>
