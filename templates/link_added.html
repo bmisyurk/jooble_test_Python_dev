@@ -1,36 +1,41 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Слава Україні</title>
+    <title>Url shortener</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-  </head>
-  <body>
-  <section class="section">
+</head>
+<body>
+<section class="section">
     <div class="container">
-            <div class="field">
-                <label class="label">Original URL</label>
-                <div class="control">
-                    <input class="input" type="text" name="original_url" value="{{ original_url }}">
-                </div>
+        <div class="field">
+            <label class="label">Original URL</label>
+            <div class="control">
+                <input class="input" type="text" name="original_url" value="{{ original_url }}">
             </div>
-            <div class="field">
-                    <label class="label">New URL</label>
-                    <div class="control">
-                        <input class="input" type="text" name="original_url" value="{{ url_for('redirect_to_url', short_url=new_link, _external=True) }}">
-                    </div>
-            </div>
-        <div class="control">
-            <button onclick="goBack()"class="button is-info">Create one more</button>
         </div>
+        <div class="field">
+            <label class="label">New URL</label>
+            <div class="control">
+                <input class="input" type="text" id="test" name="original_url"
+                       value="{{ url_for('redirect_to_url', short_url=new_link, _external=True) }}">
+            </div>
+        </div>
+        <div class="control">
+            <button onclick="goHome()" class="button is-info">Create one more</button>
+        </div>
+        <img id="img" src="{{ url_for('static', filename='frog.gif') }}" hspace="1000" vspace="-500"/>
     </div>
-  </section>
-  </body>
+</section>
+</body>
 </html>
 <script>
-function goBack() {
-  window.history.back();
-}
+    function goHome() {
+        window.location = '/';
+    }
+    setTimeout(function () {
+        document.getElementById('img').style.display = 'none';
+    }, 2900);
 </script>

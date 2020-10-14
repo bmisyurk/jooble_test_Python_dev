@@ -4,29 +4,31 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Слава Україні</title>
+    <title>Url shortener</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 </head>
 
 <body>
-    <section class="section">
-        <div class="container">
-            <form method="POST" action="{{ url_for('add_link') }}">
-                <div class="field">
-                    <label class="label">Original URL</label>
-                    <div class="control">
-                        <input class="input" type="text" name="original_url" placeholder="Write any url for e.g. https://google.com" required>
-                        <label class="label">Lifetime (in days)</label>
-                        <input type="range" value="90" min="1" max="365" step="1" oninput="this.nextElementSibling.value = this.value">
-                        <input type="number" class="input" value="90" min="1" max="365" name="lifetime">
-                    </div>
-                </div>
+<section class="section">
+    <div class="container">
+        <form method="POST" action="{{ url_for('index') }}">
+            <div class="field">
+                <label class="label">Original URL</label>
                 <div class="control">
-                    <button type="submit" class="button is-info">Shorten</button>
+                    <input class="input" type="text" name="original_url"
+                           placeholder="Write any url for e.g. https://google.com" pattern="^((H|h)ttp|(H|h)ttps):\/\/.{1,}" required>
+                    <label class="label">Lifetime (in days)</label>
+                    <input type="range" value="90" min="1" max="365" step="1"
+                           oninput="this.nextElementSibling.value = this.value">
+                    <input type="number" class="input" value="90" min="1" max="365" name="lifetime">
                 </div>
-            </form>
-        </div>
-    </section>
+            </div>
+            <div class="control">
+                <button type="submit" class="button is-info">Shorten</button>
+            </div>
+        </form>
+    </div>
+</section>
 </body>
 </html>
