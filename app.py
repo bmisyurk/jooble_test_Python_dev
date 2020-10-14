@@ -6,12 +6,6 @@ from datetime import datetime, timedelta
 from flask import render_template, request, redirect, jsonify
 
 
-@app.route('/<string:short_url>')
-def redirect_to_url(short_url):
-    link = Link.query.filter_by(short_url=short_url).first_or_404()
-    return redirect(link.original_url) if link.date_expire > datetime.now() else url_expired(link.date_expire)
-
-
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
@@ -42,6 +36,12 @@ def add_link_from_api():
             return single_addition(links[0], lifetime)
     except Exception as e:
         return bad_request(e)
+
+
+@app.route('/<string:short_url>')
+def redirect_to_url(short_url):
+    link = Link.query.filter_by(short_url=short_url).first_or_404()
+    return redirect(link.original_url) if link.date_expire > datetime.now() else url_expired(link.date_expire)
 
 
 @app.route('/get_data/<string:short_url>', methods=["GET"])
