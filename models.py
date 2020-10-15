@@ -18,6 +18,8 @@ class Link(db.Model):
         self.short_url = self.generate_short_link()
 
     def generate_short_link(self):
+        """Генерация хеша для краткой ссылки при вызове класса Link, если данный хеш будет существовать в БД,
+         функция рекурсивно вызывается и генерирует новый хеш до тех пор, пока хеш будет уникальным"""
         characters = f'{string.digits}{string.ascii_letters}'
         short_url = ''.join(choices(characters, k=4))
         link = self.query.filter_by(short_url=short_url).first()

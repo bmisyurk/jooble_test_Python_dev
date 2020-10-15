@@ -5,10 +5,6 @@ from flask import jsonify, request
 from datetime import datetime, timedelta
 
 
-def url_expired(expire):
-    return f'<h2 style="font-family: cursive; text-align:center">Url was expired {expire} <h2>'
-
-
 def single_addition(link, lifetime):
     row = Link(original_url=''.join(link.split()),
                lifetime=lifetime,
@@ -32,4 +28,5 @@ def multiple_addition(links, lifetime):
             db.session.commit()
     return jsonify(code=200,
                    log='Successfully added links')
+
 
