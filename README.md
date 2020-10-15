@@ -9,6 +9,7 @@
     2. [POST requests](#POST-requests)
     3. [Error handler](#Error-handler)
 4. [Test API](#Test-API)
+5. [Access to DB](#Access-to-DB)
 
 ## App on hosting Heroku:
 https://sh0rtener-url.herokuapp.com/
@@ -180,4 +181,11 @@ curl -i -H "Content-Type: application/json" -X POST -d "{\"original_links\":\"ht
 curl -i -H "Content-Type: application/json" -X POST -d "{\"original_links\":\"https://miro.com\", \"lifetime\":\"1000000\"}" http://127.0.0.1:5000/add_link
 curl -i -H "Content-Type: application/json" -X POST -d "{\"original_links\":\"https://miro.com\", \"lifetime\":\"100.02\"}" http://127.0.0.1:5000/add_link
 ```
+##Access to DB
 
+In a work directory you can look at stored records in database file `link.db`
+
+```
+$sqlite3 link.db
+$select id, original_url, short_url, lifetime, date_created, date_expire  from link;
+```
