@@ -19,8 +19,8 @@ https://sh0rtener-url.herokuapp.com/
 ## Run the app
 
 ```
-$ git clone https://github.com/bmisyurk/jooble_test_python_dev
-$ cd jooble_test_python_dev
+$ git clone https://github.com/bmisyurk/shortener_url
+$ cd shortener_url
 $ pip install -r requirements.txt
 $ python -c "from app import db; db.drop_all(); db.create_all()"
 $ python app.py
